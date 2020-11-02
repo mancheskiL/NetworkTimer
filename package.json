@@ -1,0 +1,23 @@
+{
+  "name": "NetworkTimer",
+  "version": "1.0.0",
+  "description": "An Electron app that creates countdown timer instances on a networked server. The multiple timers can be accessed via URL from other machines on the network in real time",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mancheskiL/NetworkTimer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mancheskiL/NetworkTimer/issues"
+  },
+  "homepage": "https://github.com/mancheskiL/NetworkTimer#readme",
+  "devDependencies": {
+    "electron": "^10.1.5"
+  }
+}
