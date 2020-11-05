@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, protocol, BrowserWindow } from 'electron'
+import { app, protocol, BrowserWindow, ipcMain } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
 const isDevelopment = process.env.NODE_ENV !== 'production'
@@ -77,3 +77,18 @@ if (isDevelopment) {
     })
   }
 }
+
+ipcMain.on('new-window', (event) => {
+  const win = new BrowserWindow(
+    {
+      width: 400,
+      height: 300
+    }
+  )
+  // win.loadURL('http://192.168.178.43:3000')
+  // test server so changes can be made faster, changing port 3000 instance involves restarting pi every time...
+  // don't forget to run this port:2000 instance when testing!
+  
+
+  win.loadURL('https://192.168.178.43:2000')
+})
