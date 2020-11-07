@@ -24,6 +24,9 @@ export default {
                 url: 'http://192.168.178.43:2000/timer',
                 headers: {
                     'Content-Type': 'appliation/x-www-form-urlencoded',
+                },
+                params: {
+                    time: this.input
                 }
             })
                 .then((response) => {
