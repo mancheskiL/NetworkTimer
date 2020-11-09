@@ -31,7 +31,7 @@ export default {
             })
                 .then((response) => {
                     console.log(response)
-                    ipcRenderer.send('new-window')
+                    ipcRenderer.send('new-window', [response['data'][0]])
                     this.input = ''
                 })
                 .catch((error) => {

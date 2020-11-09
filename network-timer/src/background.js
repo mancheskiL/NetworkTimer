@@ -78,7 +78,7 @@ if (isDevelopment) {
   }
 }
 
-ipcMain.on('new-window', (event) => {
+ipcMain.on('new-window', (event, packet) => {
   const win = new BrowserWindow(
     {
       width: 400,
@@ -90,5 +90,5 @@ ipcMain.on('new-window', (event) => {
   // don't forget to run this port:2000 instance when testing!
   
 
-  win.loadURL('https://192.168.178.43:2000')
+  win.loadURL(`http://192.168.178.43:2000/${packet[0]}`)
 })
