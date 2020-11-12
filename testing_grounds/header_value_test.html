@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head>
+    <script>
+        // var test = 10
+
+        // var test
+        // function testValue(){
+        //     test = 12
+        // }
+
+        function onload() {
+            return new Promise((resolve, reject) => {
+                if (document.readyState === 'complete') { return resolve() }
+                window.addEventListener('load', resolve)
+            })
+        }
+    </script>
+</head>
+<body>
+    <script>
+        // console.log(test)
+        var test = onload()
+            .then(()=> {
+                return 15
+            })
+        
+        console.log(test)
+    </script>
+</body>
