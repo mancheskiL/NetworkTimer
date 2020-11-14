@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <p>{{ message }}</p>
         <input id='input' v-model="input" placeholder="Enter a time">
         <button v-on:click="submit" class="submit">Submit</button>
     </div>
@@ -14,29 +15,35 @@ export default {
     name: 'Container',
     data() {
         return {
-            input:''
+            input:'',
+            message:''
         }
     },
     methods: {
         submit() {
-            axios({
-                method: 'get',
-                url: 'http://192.168.178.43:2000/timer',
-                headers: {
-                    'Content-Type': 'appliation/x-www-form-urlencoded',
-                },
-                params: {
-                    time: this.input
-                }
-            })
-                .then((response) => {
-                    console.log(response)
-                    ipcRenderer.send('new-window', [response['data'][0]])
-                    this.input = ''
+            if (this.input.includes(':')){
+                this.message = ''
+                axios({
+                    method: 'get',
+                    url: 'http://192.168.178.43:2000/timer',
+                    headers: {
+                        'Content-Type': 'appliation/x-www-form-urlencoded',
+                    },
+                    params: {
+                        time: this.input
+                    }
                 })
-                .catch((error) => {
-                    console.log(error)
-                })
+                    .then((response) => {
+                        console.log(response)
+                        ipcRenderer.send('new-window', [response['data'][0]])
+                        this.input = ''
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    })
+            } else {
+                this.message = 'Time must include a ":"'
+            }
         },
     }
 }
@@ -45,13 +52,18 @@ export default {
 <style scoped>
     button{
         padding:10px;
-        position:absolute;
-        background-color:blueviolet;
+        background-color:rgb(255, 4, 4);
         border-radius: 10px;
+        display: block;
+        margin: auto;
+        margin-top: 10px;
+        text-align: center;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
     }
     .submit{
         top:20%;
         right: 40%;
-        width: 20%;
     }
 </style>
