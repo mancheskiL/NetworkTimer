@@ -27,7 +27,8 @@ export default {
   border-style: solid;
   padding: 10px;
   width: 300px;
-  height: 110px;
+  /* height: 110px; */
+  height: 100%;
   margin: auto;
 }
 </style>

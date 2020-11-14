@@ -22,7 +22,6 @@ export default {
     methods: {
         submit() {
             if (this.input.includes(':')){
-                this.message = ''
                 axios({
                     method: 'get',
                     url: 'http://192.168.178.43:2000/timer',
@@ -37,6 +36,7 @@ export default {
                         console.log(response)
                         ipcRenderer.send('new-window', [response['data'][0]])
                         this.input = ''
+                        this.message = `URL to find your timer: ${response['data'][0]}`
                     })
                     .catch((error) => {
                         console.log(error)
