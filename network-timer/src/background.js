@@ -96,5 +96,5 @@ ipcMain.on('new-window', (event, packet) => {
   // don't forget to run this port:2000 instance when testing!
   
 
-  win.loadURL(`http://192.168.178.43:2000/${packet[0]}`)
+  win.loadURL(`http://192.168.178.43:3000/${packet[0]}`)
 })

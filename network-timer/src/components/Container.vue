@@ -24,7 +24,7 @@ export default {
             if (this.input.includes(':')){
                 axios({
                     method: 'get',
-                    url: 'http://192.168.178.43:2000/timer',
+                    url: 'http://192.168.178.43:3000/timer',
                     headers: {
                         'Content-Type': 'appliation/x-www-form-urlencoded',
                     },
